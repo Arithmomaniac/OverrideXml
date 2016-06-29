@@ -49,3 +49,4 @@ packages/
 
 # visual studio database projects
 *.dbmdl
+/src/.vs/OverrideXmlSample/OverrideXmlSample.scgdat

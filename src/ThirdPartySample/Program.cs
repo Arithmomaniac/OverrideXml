@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using Ikriv.Xml;
 
 namespace ThirdPartySample
 {

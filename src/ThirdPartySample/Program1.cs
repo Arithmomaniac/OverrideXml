@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-using Ikriv.Xml;
 
 namespace OverrideXmlSample
 {
@@ -18,7 +17,7 @@ namespace OverrideXmlSample
         public string Capital { get; set; }
     }
 
-    class Program
+    class Program1
     {
         private static void Serialize(Continent continent, XmlAttributeOverrides overrides)
         {
