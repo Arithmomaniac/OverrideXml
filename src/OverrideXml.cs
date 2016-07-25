@@ -1,6 +1,6 @@
 /*
  * Copyright (C) 2014 Ivan Krivyakov, http://www.ikriv.com/
- * And (C) 2014 Avi Levin
+ * And (C) 2016 Avi Levin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,6 @@ using System.Xml.Serialization;
 
 namespace Arithmomaniac.OverrideXml
 {
-
-
     internal class XmlAttributeOverride
     {
         public XmlAttributeOverride(Type type, string member, XmlAttributes attributes)
@@ -39,9 +37,7 @@ namespace Arithmomaniac.OverrideXml
         private Type Class;
         protected abstract string PropertyName { get; }
         protected XmlAttributes Attributes { get; } = new XmlAttributes();
-        internal XmlAttributeOverride Compile() => new XmlAttributeOverride(Class, PropertyName, Attributes);
-        
-
+        internal XmlAttributeOverride Compile() => new XmlAttributeOverride(Class, PropertyName, Attributes);       
     }
 
     public class OverrideRootXml<T> : OverrideXmlSpec
@@ -103,13 +99,13 @@ namespace Arithmomaniac.OverrideXml
             PropertyName = propInfo.Name;
         }
 
+
         public OverrideMemberXml<T> XmlAnyAttribute()
         {
 
             Attributes.XmlAnyAttribute = new XmlAnyAttributeAttribute();
             return this;
         }
-
 
         public OverrideMemberXml<T> XmlText()
         {
@@ -125,11 +121,10 @@ namespace Arithmomaniac.OverrideXml
             return this;
         }
 
+
         public OverrideMemberXml<T> XmlArray() => Attr(new XmlArrayAttribute());
 
-
         public OverrideMemberXml<T> XmlArray(string elementName) => Attr(new XmlArrayAttribute(elementName));
-
 
         public OverrideMemberXml<T> Attr(XmlArrayAttribute attribute)
         {
@@ -137,6 +132,7 @@ namespace Arithmomaniac.OverrideXml
             Attributes.XmlArray = attribute;
             return this;
         }
+
 
         public OverrideMemberXml<T> XmlArrayItem() => Attr(new XmlArrayItemAttribute());
 
@@ -149,6 +145,7 @@ namespace Arithmomaniac.OverrideXml
             return this;
         }
 
+
         public OverrideMemberXml<T> XmlAttribute() => Attr(new XmlAttributeAttribute());
 
         public OverrideMemberXml<T> XmlAttribute(string name) => Attr(new XmlAttributeAttribute(name));
@@ -159,6 +156,7 @@ namespace Arithmomaniac.OverrideXml
             Attributes.XmlAttribute = attribute;
             return this;
         }
+
 
         public OverrideMemberXml<T> XmlElement() => Attr(new XmlElementAttribute());
         
@@ -172,6 +170,7 @@ namespace Arithmomaniac.OverrideXml
             Attributes.XmlElements.Add(attribute);
             return this;
         }
+
 
         public OverrideMemberXml<T> XmlAnyElement() => Attr(new XmlAnyElementAttribute());
 
@@ -191,29 +190,46 @@ namespace Arithmomaniac.OverrideXml
     public class OverrideXml
     {
         private List<OverrideXmlSpec> _overrides = new List<OverrideXmlSpec>();
-
-        public OverrideRootXml<T> ForRoot<T>() {
-            var ovride = new OverrideRootXml<T>();
-            _overrides.Add(ovride);
-            return ovride;
-        }
-        public OverrideMemberXml<T> ForMember<T>(Expression<Func<T, object>> propertyLambda)
-        {
-            var ovride = new OverrideMemberXml<T>(propertyLambda);
-            _overrides.Add(ovride);
-            return ovride;
-            
-        }
         
+        public OverrideXml Configure<T>(Action<OverrideXmlClass<T>> configurator)
+        {
+            var classOverrides = new OverrideXmlClass<T>();
+            configurator(classOverrides);
+            _overrides.AddRange(classOverrides.Overrides);
+            return this;
+        }
+
         public XmlAttributeOverrides Commit()
         {
             var overrides = new XmlAttributeOverrides();
             foreach (var ovride in _overrides.Select(x => x.Compile()))
             {
-                overrides.Add(ovride.Type, ovride.Member, ovride.Attributes);
+                if (ovride.Member == null)
+                    overrides.Add(ovride.Type, ovride.Attributes);
+                else
+                    overrides.Add(ovride.Type, ovride.Member, ovride.Attributes);
             }
             return overrides;
         }
     }
 
+    public class OverrideXmlClass<T>
+    {
+        private List<OverrideXmlSpec> _overrides = new List<OverrideXmlSpec>();
+        internal IReadOnlyCollection<OverrideXmlSpec> Overrides => _overrides;
+
+        public OverrideRootXml<T> ForRoot()
+        {
+            var ovride = new OverrideRootXml<T>();
+            _overrides.Add(ovride);
+            return ovride;
+        }
+        public OverrideMemberXml<T> ForMember(Expression<Func<T, object>> propertyLambda)
+        {
+            var ovride = new OverrideMemberXml<T>(propertyLambda);
+            _overrides.Add(ovride);
+            return ovride;
+
+        }
+    }
 }
