@@ -1,14 +1,14 @@
-﻿using Arithmomaniac.OverrideXml;
+﻿using Arithmomaniac.XmlOverride;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Xunit;
 using StatePrinting;
 
-namespace OverrideXmlSample
+namespace Arithmomaniac.XmlOverride.Tests
 {
 
 
-    public class Test1
+    public class XmlOverrideBuilderTests
     {
         private class Continent
         {
@@ -24,7 +24,7 @@ namespace OverrideXmlSample
 
         private static XmlAttributeOverrides GetOverrides()
         {
-            return new OverrideXml()
+            return new XmlOverrideBuilder()
                 .Configure<Continent>(x => {
                     x.ForRoot().XmlRoot("continent");
                     x.ForMember(y => y.Name).XmlAttribute("name");
@@ -61,8 +61,8 @@ namespace OverrideXmlSample
         [Fact]
         public void HelperOverrideBehavesIdenticallyToManualOverride()
         {
+            //lazy deep equality comparison
             var printer = new Stateprinter();
-            //https://github.com/kbilsted/StatePrinter/blob/master/doc/AutomatingUnitTesting.md
             Assert.Equal(printer.PrintObject(GetOverrides()), printer.PrintObject(GetOverridesRaw()));
 
         }

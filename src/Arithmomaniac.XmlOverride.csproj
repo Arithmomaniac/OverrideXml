@@ -7,8 +7,8 @@
     <ProjectGuid>{51081393-7098-4677-BA8C-B8CE463F974B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OverrideXmlSample</RootNamespace>
-    <AssemblyName>OverrideXmlSample</AssemblyName>
+    <RootNamespace>Arithmomaniac.XmlOverride</RootNamespace>
+    <AssemblyName>Arithmomaniac.XmlOverride</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile>
@@ -48,7 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OverrideXml.cs" />
+    <Compile Include="XmlOverrideBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
