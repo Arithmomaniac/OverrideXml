@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arithmomaniac.XmlOverride", "Arithmomaniac.XmlOverride.csproj", "{51081393-7098-4677-BA8C-B8CE463F974B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arithmomaniac.XmlOverride", "Arithmomaniac.XmlOverride\Arithmomaniac.XmlOverride.csproj", "{51081393-7098-4677-BA8C-B8CE463F974B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arithmomaniac.XmlOverride.Tests", "ThirdPartySample\Arithmomaniac.XmlOverride.Tests.csproj", "{18E90772-5474-47BE-9238-5EEA08FB9515}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arithmomaniac.XmlOverride.Tests", "Arithmomaniac.XmlOverride.Tests\Arithmomaniac.XmlOverride.Tests.csproj", "{18E90772-5474-47BE-9238-5EEA08FB9515}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

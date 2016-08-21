@@ -76,7 +76,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Arithmomaniac.XmlOverride.csproj">
+    <ProjectReference Include="..\Arithmomaniac.XmlOverride\Arithmomaniac.XmlOverride.csproj">
       <Project>{51081393-7098-4677-BA8C-B8CE463F974B}</Project>
       <Name>Arithmomaniac.XmlOverride</Name>
     </ProjectReference>
