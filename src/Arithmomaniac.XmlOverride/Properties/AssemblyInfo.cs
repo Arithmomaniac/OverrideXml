@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Arithmomaniac.XmlOverride")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Control XML serialization via a fluid XmlAttributeOverrides builder.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Avi Levin")]
 [assembly: AssemblyProduct("Arithmomaniac.XmlOverride")]
-[assembly: AssemblyCopyright("Copyright ©  2014-16")]
+[assembly: AssemblyCopyright("Copyright ©  2014-16 Avi Levin, Ivan Krivyakov")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

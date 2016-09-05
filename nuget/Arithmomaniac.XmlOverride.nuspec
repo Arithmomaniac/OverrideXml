@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Arithmomaniac.XmlOverride</id>
+    <version>1.0.0</version>
+    <title>XmlOverrideBuilder</title>
+    <authors>Avi Levin</authors>
+    <licenseUrl>https://github.com/Arithmomaniac/XmlOverrideBuilder/blob/master/license.txt</licenseUrl>
+    <projectUrl>https://github.com/Arithmomaniac/XmlOverrideBuilder/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Control XML serialization via a fluid XmlAttributeOverrides builder.</description>
+    <copyright>Copyright 2014-2016 Ivan Krivyakov, Avi Levin</copyright>
+	<tags>xml serialization</tags>
+  </metadata>
+  <files>
+    <file src="..\src\bin\Release\Arithmomaniac.XmlOverride.dll" target="lib" /> 
+   </files>
+</package>

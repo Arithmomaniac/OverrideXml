@@ -1,1 +1,1 @@
-nuget pack OverrideXml.nuspec
+nuget.exe pack Arithmomaniac.XmlOverride.nuspec -Prop Configuration=Release 
